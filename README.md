@@ -12,5 +12,5 @@ locator.locate(FunctionLocator).then(console.log);
 Output:
 
 ```text
-file:///home/luca/Projects/function-locator/src/FunctionLocator.ts
+/home/luca/Projects/function-locator/src/FunctionLocator.ts
 ```

@@ -4,6 +4,8 @@ import { randomString } from './randomString';
 
 const ID_PREFIX = '__function-locator-';
 
+const FILE_URL_PREFIX = 'file://';
+
 export class FunctionLocator {
   private readonly inspector = new Inspector();
 
@@ -43,7 +45,8 @@ export class FunctionLocator {
         throw new Error(`No script id was found for object id: ${objectId}`);
       }
 
-      return this.parsedScripts[scriptId].url;
+      const url = this.parsedScripts[scriptId].url;
+      return url.startsWith(FILE_URL_PREFIX) ? url.substring(FILE_URL_PREFIX.length) : url;
     } finally {
       // TODO
       // @ts-ignore
