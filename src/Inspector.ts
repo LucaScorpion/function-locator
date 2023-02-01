@@ -11,6 +11,9 @@ export class Inspector {
 
   public constructor() {
     this.session = new Session();
+
+    // Here we do need to use any, otherwise this.post can't have a generic T.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.post = promisify<string, any>(this.session.post).bind(this.session);
   }
 
@@ -29,11 +32,15 @@ export class Inspector {
     return this.post('Runtime.evaluate', { expression });
   }
 
-  public runtimeGetProperties(objectId: Runtime.RemoteObjectId): Promise<Runtime.GetPropertiesReturnType> {
+  public runtimeGetProperties(
+    objectId: Runtime.RemoteObjectId
+  ): Promise<Runtime.GetPropertiesReturnType> {
     return this.post('Runtime.getProperties', { objectId });
   }
 
-  public async runtimeReleaseObject(objectId: Runtime.RemoteObjectId): Promise<void> {
+  public async runtimeReleaseObject(
+    objectId: Runtime.RemoteObjectId
+  ): Promise<void> {
     return this.post('Runtime.releaseObject', { objectId });
   }
 }
