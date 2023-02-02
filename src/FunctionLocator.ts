@@ -63,4 +63,8 @@ export class FunctionLocator {
       await this.inspector.runtimeReleaseObject(objectId);
     }
   }
+
+  public close(): void {
+    this.inspector.disconnect();
+  }
 }
