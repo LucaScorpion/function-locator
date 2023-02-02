@@ -4,14 +4,6 @@ import { randomString } from './randomString';
 
 const FILE_URL_PREFIX = 'file://';
 
-// TODO: move this to a separate .d.ts file?
-declare global {
-  // Here we do need to use var, otherwise the declare statement doesn't work.
-  // Though this should really be moved to a separate file.
-  // eslint-disable-next-line no-var
-  var functionLocator: Record<string, unknown> | undefined;
-}
-
 export class FunctionLocator {
   private readonly inspector = new Inspector();
 

@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "lint": "eslint \"src/**/*.ts\" --max-warnings 0",
     "format": "npm run lint -- --fix"
   },
